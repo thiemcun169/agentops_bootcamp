@@ -1,0 +1,34 @@
+{
+  "manifest": {
+    "package_version": "0.3.0",
+    "git_describe": null,
+    "git_commit": null,
+    "uv_lock_sha256": "521df5d38a57",
+    "prompt_sha256": "439f527b5660",
+    "model": "openai:gpt-6-luna",
+    "config": {
+      "app_env": "dev",
+      "max_search_results": 3
+    }
+  },
+  "input": "What seasonal COP do air-source heat pumps typically reach in cold climates, and how many kWh of electricity does one need to deliver 12,000 kWh of heat at that COP?",
+  "answer": "- In cold climates, air-source heat pumps typically achieve a seasonal COP of about **2.5–3**. A Minnesota field study measured annual COPs of **2.51–2.78** at three sites.\n- At that COP, delivering **12,000 kWh of heat** takes about **4,000–4,800 kWh of electricity** (heat divided by COP).\n\nSources: https://mn.gov/commerce-stat/pdfs/card-air-source-heat-pump.pdf ; https://energy.gov/sites/prod/files/2017/04/f34/2_32219_Shen_031417-0900.pdf",
+  "served_model": "gpt-6-luna",
+  "metrics": {
+    "latency_s": 36.7,
+    "model_calls": 5,
+    "tool_calls": [
+      "web_search",
+      "web_search",
+      "web_search",
+      "web_search",
+      "calculate",
+      "calculate",
+      "calculate"
+    ],
+    "input_tokens": 7835,
+    "output_tokens": 869,
+    "cost_usd": 0.00122
+  },
+  "created_at": "2026-11-02T04:18:05Z"
+}

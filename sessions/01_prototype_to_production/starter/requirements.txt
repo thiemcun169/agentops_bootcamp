@@ -1,0 +1,6 @@
+# Shown in the lab as a PROBLEM: no versions, so `pip install -r` gets whatever is newest that day.
+# Do NOT install from this file. The session environment (uv.lock) already has everything the notebook needs.
+langchain
+langchain-openai
+tavily-python
+python-dotenv

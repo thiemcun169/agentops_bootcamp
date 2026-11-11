@@ -1,0 +1,35 @@
+[project]
+name = "research-assistant"
+version = "0.2.0"  # minor bump: the agent is now also served as an HTTP API (SemVer, Session 01)
+description = "AgentOps Session 02: the Session 01 research agent served as a FastAPI service with SSE streaming"
+readme = "README.md"
+requires-python = "==3.12.*"
+# Exact pins (==): the app is tested with these versions; uv.lock pins every sub-dependency too.
+# langchain / langchain-openai / tavily-python / pydantic-settings: same pins as Session 01.
+dependencies = [
+    "langchain==1.4.2",
+    "langchain-openai==1.6.6",
+    "langgraph==1.2.12",          # InMemorySaver: conversation state per session_id
+    "tavily-python==0.8.4",
+    "pydantic-settings==2.16.2",  # Settings from environment variables and .env
+    "fastapi[standard]==0.162.0", # native Server-Sent Events (fastapi.sse) since 0.135; [standard] adds the fastapi CLI and uvicorn
+]
+
+[project.scripts]
+research-assistant = "research_assistant.__main__:main"  # `uv run research-assistant ...` (the Session 01 CLI, unchanged)
+
+[dependency-groups]
+dev = [
+    "pytest==9.1.1",
+    "httpx==0.28.1",  # TestClient and examples/concurrent_requests.py
+]
+
+[tool.fastapi]
+entrypoint = "research_assistant.api.main:app"  # `uv run fastapi dev` / `uv run fastapi run` find the app here
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[build-system]
+requires = ["uv_build>=0.13.1,<0.14.0"]
+build-backend = "uv_build"

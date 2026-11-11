@@ -1,0 +1,6 @@
+# Break step of Part 5: the agent looks for Postgres on localhost (its own container).
+# docker compose -f compose.yaml -f breaks/compose.localhost.yaml up -d
+services:
+  agent-api:
+    environment:
+      DB_HOST: localhost

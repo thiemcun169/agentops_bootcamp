@@ -1,0 +1,19 @@
+# secrets: never commit them
+.env
+.env.db
+# Session 04: the deploy variables and the token file uploaded to Secret Manager
+deploy/cloudrun.env
+secrets/
+
+# environments and caches
+.venv/
+venvAO*/
+__pycache__/
+*.py[oc]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# build output
+build/
+dist/
+*.egg-info

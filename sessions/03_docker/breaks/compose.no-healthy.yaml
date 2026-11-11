@@ -1,0 +1,6 @@
+# Break step of Part 5: start agent-api as soon as the postgres container has started, not when it is healthy.
+# docker compose -f compose.yaml -f breaks/compose.no-healthy.yaml up -d
+services:
+  agent-api:
+    depends_on: !override
+      - postgres

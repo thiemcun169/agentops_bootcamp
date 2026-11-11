@@ -1,0 +1,15 @@
+# secrets: never commit them
+.env
+
+# environments and caches
+.venv/
+venvAO*/
+__pycache__/
+*.py[oc]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# build output
+build/
+dist/
+*.egg-info

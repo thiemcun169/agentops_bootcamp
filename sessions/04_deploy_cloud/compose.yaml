@@ -1,0 +1,40 @@
+# docker compose up -d --build: Postgres starts first; agent-api waits until it is healthy.
+services:
+  agent-api:
+    build: .
+    image: agent-api:0.4.0
+    env_file:
+      - .env      # model and search keys
+      - .env.db   # the same database user and password as the postgres service
+    environment:
+      DB_HOST: postgres      # the service name, resolved by Compose DNS (not localhost)
+      CHECKPOINTER: postgres
+    ports:
+      - "${API_PORT:-8000}:8000"   # host port: set API_PORT in .env if 8000 is taken
+    depends_on:
+      postgres:
+        condition: service_healthy
+        restart: true
+    develop:  # docker compose watch
+      watch:
+        - action: sync+restart
+          path: ./src
+          target: /app/src
+        - action: rebuild
+          path: pyproject.toml
+        - action: rebuild
+          path: uv.lock
+
+  postgres:
+    image: postgres:18
+    env_file: .env.db
+    volumes:
+      - pgdata:/var/lib/postgresql   # postgres:18 keeps its data under this path
+    healthcheck:
+      test: pg_isready -U agent
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  pgdata:

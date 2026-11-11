@@ -1,0 +1,27 @@
+[project]
+name = "research-assistant"
+version = "0.1.0"
+description = "AgentOps Session 01: a small research agent turned into a reproducible project"
+readme = "README.md"
+requires-python = "==3.12.*"
+# Exact pins (==): the app is tested with these versions; uv.lock pins every sub-dependency too.
+dependencies = [
+    "langchain==1.4.2",
+    "langchain-openai==1.6.6",
+    "tavily-python==0.8.4",
+    "pydantic-settings==2.16.2",  # Settings from environment variables and .env
+]
+
+[project.scripts]
+research-assistant = "research_assistant.__main__:main"  # `uv run research-assistant ...`
+
+[dependency-groups]
+dev = [
+    "pytest==9.1.1",
+    "ipykernel==7.3.0",       # runs starter/prototype.ipynb in the IDE
+    "python-dotenv==1.2.3",   # the starter notebook loads .env with it
+]
+
+[build-system]
+requires = ["uv_build>=0.13.1,<0.14.0"]
+build-backend = "uv_build"

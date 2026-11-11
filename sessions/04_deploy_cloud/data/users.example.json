@@ -1,0 +1,7 @@
+{
+  "_comment": "Template for the token file of the deployed service. Copy to secrets/users.json, replace both tokens with random values (README, Challenge 4), and upload it to the secret agent-users. secrets/ is git- and docker-ignored.",
+  "tokens": {
+    "REPLACE-WITH-A-RANDOM-TOKEN-1": "alice",
+    "REPLACE-WITH-A-RANDOM-TOKEN-2": "bob"
+  }
+}
