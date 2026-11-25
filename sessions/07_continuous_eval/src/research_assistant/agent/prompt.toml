@@ -1,4 +1,4 @@
 # The Langfuse prompt this release uses. A prompt change is a pull request that bumps `version`:
 # the eval gate (.github/workflows/eval-gate.yml) runs the regression dataset on the new version.
 name = "research-assistant"
-version = 1
+version = 3
