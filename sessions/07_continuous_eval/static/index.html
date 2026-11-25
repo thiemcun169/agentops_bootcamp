@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research Assistant</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header>
+    <h1>Research Assistant</h1>
+    <span id="info" class="muted"></span>
+    <label>User
+      <select id="user">
+        <option value="alice-dev-token">alice</option>
+        <option value="bob-dev-token">bob</option>
+      </select>
+    </label>
+  </header>
+  <main>
+    <section class="chat">
+      <div id="session" class="muted"></div>
+      <div id="answer" class="answer" aria-live="polite"></div>
+      <div id="feedback" class="feedback" hidden>
+        <span>Was this answer useful?</span>
+        <button type="button" id="up" title="Useful">👍</button>
+        <button type="button" id="down" title="Not useful">👎</button>
+        <input id="comment" placeholder="What was wrong? (optional)" maxlength="500">
+        <span id="feedback-status" class="muted"></span>
+      </div>
+      <form id="ask">
+        <textarea id="message" rows="3" placeholder="Ask a factual question…">What seasonal COP do air-source heat pumps reach in cold climates, and how many kWh of electricity does one need to deliver 12,000 kWh of heat at that COP?</textarea>
+        <div class="row">
+          <button type="button" id="new">New session</button>
+          <button type="submit" id="send">Send</button>
+        </div>
+      </form>
+    </section>
+    <aside>
+      <h2>Run activity</h2>
+      <ol id="activity"></ol>
+      <div id="stats" class="muted"></div>
+    </aside>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

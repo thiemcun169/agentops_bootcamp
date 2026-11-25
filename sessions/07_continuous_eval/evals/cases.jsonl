@@ -1,0 +1,16 @@
+{"id": "num-heat-pump-cop", "question": "What seasonal COP do air-source heat pumps reach in cold climates?", "expected": {"must_search": true, "must_cite": true}}
+{"id": "num-ev-battery-degradation", "question": "How much capacity do electric car batteries lose per year on average?", "expected": {"must_search": true, "must_cite": true}}
+{"id": "num-solar-panel-efficiency", "question": "What is the efficiency of the best commercial solar panels sold today?", "expected": {"must_search": true, "must_cite": true}}
+{"id": "num-lfp-cycle-life", "question": "How many charge cycles does an LFP home battery last?", "expected": {"must_search": true, "must_cite": true}}
+{"id": "num-induction-efficiency", "question": "How efficient is induction cooking compared with gas, in percent?", "expected": {"must_search": true, "must_cite": true}}
+{"id": "num-ev-charging-loss", "question": "How much energy is lost when charging an electric car at home on a level 2 charger?", "expected": {"must_search": true, "must_cite": true}}
+{"id": "num-heat-pump-water-heater", "question": "How much electricity does a heat pump water heater use per year in a typical home?", "expected": {"must_search": true, "must_cite": true}}
+{"id": "num-wind-capacity-factor", "question": "What capacity factor do offshore wind farms reach?", "expected": {"must_search": true, "must_cite": true}}
+{"id": "calc-heat-pump-kwh", "question": "A house needs 12,000 kWh of heat per year. With a heat pump of seasonal COP 2.8, how many kWh of electricity is that?", "expected": {"must_calculate": true}}
+{"id": "calc-ev-trip-cost", "question": "An electric car uses 17 kWh per 100 km and electricity costs 0.32 EUR per kWh. What does a 450 km trip cost?", "expected": {"must_calculate": true}}
+{"id": "calc-solar-payback", "question": "A solar system costs 9,600 USD and saves 1,150 USD per year. After how many years does it pay back?", "expected": {"must_calculate": true}}
+{"id": "calc-battery-hours", "question": "A 13.5 kWh home battery powers a 600 W load. How many hours does it last?", "expected": {"must_calculate": true}}
+{"id": "mixed-heat-pump-savings", "question": "How much electricity would a heat pump with the typical seasonal COP of cold-climate heat pumps use for 15,000 kWh of heat? Look up the COP first.", "expected": {"must_search": true, "must_cite": true, "must_calculate": true}}
+{"id": "mixed-ev-range-winter", "question": "By what percentage does EV range drop in freezing weather, and how many km is left of a 420 km range?", "expected": {"must_search": true, "must_cite": true, "must_calculate": true}}
+{"id": "def-cop", "question": "What does COP mean for a heat pump?", "expected": {}}
+{"id": "def-lfp", "question": "What does LFP stand for in batteries?", "expected": {}}

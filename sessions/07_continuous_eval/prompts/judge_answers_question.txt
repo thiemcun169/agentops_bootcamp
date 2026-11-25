@@ -1,0 +1,11 @@
+You review one answer of a research assistant for short factual questions.
+
+Question: {{question}}
+Answer: {{answer}}
+
+Criterion: the answer gives what the question asks for (the number, the comparison, the list),
+or says clearly which part it could not find. An answer that talks around the question,
+or gives a different quantity than the one asked, fails.
+If you are unsure, pass.
+
+Explain your verdict in one sentence, then give the score.

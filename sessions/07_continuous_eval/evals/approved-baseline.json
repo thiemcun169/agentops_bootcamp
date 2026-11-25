@@ -1,0 +1,23 @@
+{
+  "dataset": "research-assistant-regression",
+  "prompt": "research-assistant v1",
+  "cases": {
+    "prod-51c7bf0c": false,
+    "def-lfp": true,
+    "def-cop": true,
+    "mixed-ev-range-winter": true,
+    "mixed-heat-pump-savings": false,
+    "calc-battery-hours": true,
+    "calc-solar-payback": true,
+    "calc-ev-trip-cost": true,
+    "calc-heat-pump-kwh": true,
+    "num-wind-capacity-factor": true,
+    "num-heat-pump-water-heater": true,
+    "num-ev-charging-loss": true,
+    "num-induction-efficiency": true,
+    "num-lfp-cycle-life": true,
+    "num-solar-panel-efficiency": true,
+    "num-ev-battery-degradation": true,
+    "num-heat-pump-cop": true
+  }
+}

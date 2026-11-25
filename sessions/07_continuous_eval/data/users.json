@@ -1,0 +1,7 @@
+{
+  "_comment": "Demo bearer tokens for the lab. A real service verifies a signed token from an identity provider (OAuth/OIDC) instead.",
+  "tokens": {
+    "alice-dev-token": "alice",
+    "bob-dev-token": "bob"
+  }
+}
