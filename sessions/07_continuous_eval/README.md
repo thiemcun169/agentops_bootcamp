@@ -194,7 +194,7 @@ PROMPT_VERSION=2 uv run python evals/gate.py
 ```
 FAIL  num-heat-pump-cop              baseline=PASS  REGRESSION
 …
-pass_rate 6/16 · newly failing 10 · missing 0 · …
+pass_rate 6/17 · newly failing 9 · missing 0 · …
 GATE FAILED: cases that passed in the approved baseline now fail: mixed-ev-range-winter, …
 ```
 In Langfuse → *Datasets → research-assistant-regression → Experiments*, select the two runs and compare them item by
@@ -213,10 +213,9 @@ item: v2 drops the `Sources:` line, so `cites_sources` fails on every factual ca
    ```
    ❌ research-assistant v2 gate
    RegressionError: cases that passed in the approved baseline now fail: mixed-ev-range-winter, num-ev-battery-degradation, …
-   | pass_rate | 0.375 |
+   | pass_rate | 0.353 |
+   Item results (17)
    ```
-   (`pass_rate` of the run evaluator counts only the cases that finished: 6 of 16; the gate counts the crashed case
-   as failed.)
 6. Open another pull request with `version = 3`: the check passes and two cases turn from FAIL to PASS:
    ```
    PASS  mixed-heat-pump-savings        baseline=FAIL  FIXED
@@ -224,6 +223,7 @@ item: v2 drops the `Sources:` line, so `cites_sources` fails on every factual ca
    pass_rate 17/17 · newly failing 0 · missing 0 · …
    GATE PASSED
    ```
+   The PR comment shows `✅ research-assistant v3 gate`, `pass_rate 1.000` and the 17 item results.
 7. Merge it, run `uv run python evals/gate.py --approve` on `main` and commit the new baseline. The CI job never
    writes the baseline: a person approves it.
 
@@ -243,6 +243,7 @@ The gate costs one agent run per case with the OpenAI key (≈ 2–4 minutes for
   ```
   Run it from cron, Cloud Scheduler or a scheduled workflow (`on: schedule`).
 - **Alert.** Langfuse → *Alerts*: average of `cites_sources` over the last hour below 0.9 → webhook or Slack.
+  Alerts are evaluated on the aggregate over a time window, not on each score.
 
 ## Troubleshooting
 

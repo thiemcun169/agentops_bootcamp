@@ -7,11 +7,12 @@ import re
 
 
 def evaluate(ctx: EvaluationContext) -> EvaluationResult:
-    output = ctx.observation.output
-    output = json.loads(output) if isinstance(output, str) else (output or {})
-    answer = output.get("answer", "")
-    tail = answer.split("Sources:", 1)
-    ok = len(tail) == 2 and re.search(r"https?://\S+", tail[1]) is not None
+    out = ctx.observation.output
+    if isinstance(out, str):
+        out = json.loads(out)
+    tail = (out or {}).get("answer", "").split("Sources:", 1)
+    url = r"https?://\S+"
+    ok = len(tail) == 2 and re.search(url, tail[1])
     return EvaluationResult(scores=[Score(
-        name="cites_sources", value=ok, data_type="BOOLEAN",
+        name="cites_sources", value=bool(ok), data_type="BOOLEAN",
         comment="Sources line with a URL" if ok else "no Sources: line with a URL")])
