@@ -29,7 +29,8 @@ def mapper(*, item, **kwargs) -> EvaluatorInputs:
     return EvaluatorInputs(input=json.loads(item.input), output=output, expected_output=PRODUCTION_RULES)
 
 
-init_langfuse(get_settings())
+# The scores belong to production traces: create them in the production environment.
+init_langfuse(get_settings().model_copy(update={"langfuse_tracing_environment": "production"}))
 langfuse = get_client()
 result = langfuse.run_batched_evaluation(
     mapper=mapper, evaluators=[cites_sources, searched_web, at_most_3_bullets],

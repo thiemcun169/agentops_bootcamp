@@ -80,20 +80,22 @@ def experiment(context: RunnerContext):
         raise RegressionError(result=result, metric="newly_failing_cases", value=len(newly_failing) + len(missing),
                               threshold=0, message="cases that passed in the approved baseline now fail: "
                               + ", ".join(newly_failing + [f"{m} (missing)" for m in missing]))
-    return {"prompt": prompt_label(prompt), "cases": current}
+    return result  # experiment-action renders the scores and item results of the returned experiment in the PR
 
 
 if __name__ == "__main__":  # local run; in CI experiment-action builds the context and calls experiment()
     init_langfuse(get_settings())
     langfuse = get_client()
+    items = langfuse.get_dataset(DATASET).items
     try:
-        outcome = experiment(RunnerContext(client=langfuse, data=langfuse.get_dataset(DATASET).items))
+        result = experiment(RunnerContext(client=langfuse, data=items))
     except RegressionError as exc:
         print(f"GATE FAILED: {exc}")
         sys.exit(1)
     finally:
         langfuse.flush()
     if "--approve" in sys.argv:  # a person decides when a run becomes the baseline, never the CI job
-        BASELINE.write_text(json.dumps({"dataset": DATASET, **outcome}, indent=2) + "\n")
+        baseline = {"dataset": DATASET, "prompt": prompt_label(load_prompt(get_settings())), "cases": verdicts(result, items)}
+        BASELINE.write_text(json.dumps(baseline, indent=2) + "\n")
         print(f"saved {BASELINE.name}")
     print("GATE PASSED")
